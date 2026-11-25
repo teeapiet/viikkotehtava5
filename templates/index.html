@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Viikko 5 – tekoälychat</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script defer src="{{ url_for('static', filename='app.js') }}"></script>
+</head>
+<body data-base="{{ request.script_root }}">
+  <main>
+    <header>
+      <p class="label">LINUX · VIIKKOTEHTÄVÄ 5</p>
+      <h1>Oma tekoälychat</h1>
+      <p>Malli: {{ model }} · Ollama palvelimella A</p>
+    </header>
+
+    <p class="notice">
+      Julkinen harjoituspalvelu. Älä kirjoita henkilötietoja tai salasanoja.
+      Keskustelu tallentuu palvelimen tietokantaan.
+    </p>
+
+    <section id="messages" aria-label="Keskustelu" aria-live="polite"></section>
+
+    <form id="chat-form">
+      <label for="message">Viestisi</label>
+      <textarea id="message" maxlength="2000" rows="3" required
+                placeholder="Kysy esimerkiksi Linuxin komennoista"></textarea>
+      <div class="buttons">
+        <button id="send" type="submit">Lähetä</button>
+        <button id="clear" class="secondary" type="button">Poista keskustelu</button>
+      </div>
+    </form>
+
+    <p id="status" role="status">Ladataan keskustelua…</p>
+  </main>
+</body>
+</html>

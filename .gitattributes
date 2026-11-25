@@ -1,0 +1,5 @@
+# Käytä tekstitiedostoissa Linuxin LF-rivinvaihtoja.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.ico binary
