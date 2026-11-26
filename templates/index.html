@@ -3,53 +3,42 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Linux Chat — Week 5</title>
+  <title>Week 5 – AI Chat</title>
   <link rel="stylesheet"
-        href="{{ url_for('static', filename='style.css', v='2') }}">
+        href="{{ url_for('static', filename='style.css', v='3') }}">
   <script defer
-          src="{{ url_for('static', filename='app.js', v='2') }}"></script>
+          src="{{ url_for('static', filename='app.js', v='3') }}"></script>
 </head>
 <body data-base="{{ request.script_root }}">
   <main>
-    <header class="hero">
-      <div class="brand">LINUX LAB <span>WEEK 05</span></div>
-      <p class="eyebrow">YOUR LINUX STUDY COMPANION</p>
-      <h1>A little space to learn.</h1>
-      <p class="intro">
-        Ask a question, explore a command, or work through a Linux problem.
-      </p>
-      <p class="model">Local model · {{ model }}</p>
+    <header>
+      <p class="label">LINUX · WEEKLY ASSIGNMENT 5</p>
+      <h1>My AI Chat</h1>
+      <p>Model: {{ model }} · Ollama on Server A</p>
     </header>
 
-    <section class="chat-card" aria-label="Chat">
-      <div class="chat-heading">
-        <h2>Your conversation</h2>
-        <span>Powered by Ollama</span>
+    <p class="notice">
+      This is a public course demo. Do not share personal information
+      or passwords. Messages are stored in the server database.
+    </p>
+
+    <section id="messages"
+             aria-label="Conversation"
+             aria-live="polite"></section>
+
+    <form id="chat-form">
+      <label for="message">Your message</label>
+      <textarea id="message" maxlength="2000" rows="3" required
+                placeholder="Ask a question about Linux commands"></textarea>
+      <div class="buttons">
+        <button id="send" type="submit">Send</button>
+        <button id="clear" class="secondary" type="button">
+          Delete conversation
+        </button>
       </div>
+    </form>
 
-      <p class="notice">
-        This is a public course demo. Messages are stored on the server.
-        Please do not share passwords or personal information.
-      </p>
-
-      <section id="messages"
-               aria-label="Conversation"
-               aria-live="polite"></section>
-
-      <form id="chat-form">
-        <label for="message">Your message</label>
-        <textarea id="message" maxlength="2000" rows="3" required
-                  placeholder="For example: How do Linux file permissions work?"></textarea>
-        <div class="buttons">
-          <button id="send" type="submit">Send message <span aria-hidden="true">↗</span></button>
-          <button id="clear" class="secondary" type="button">Delete conversation</button>
-        </div>
-      </form>
-
-      <p id="status" role="status">Loading conversation…</p>
-    </section>
-
-    <footer>Flask · Gunicorn · MariaDB · Ollama</footer>
+    <p id="status" role="status">Loading conversation…</p>
   </main>
 </body>
 </html>
