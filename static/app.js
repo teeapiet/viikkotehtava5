@@ -45,7 +45,7 @@ async function loadHistory() {
     if (!response.ok) throw new Error("Could not load conversation history.");
     const history = await response.json();
     for (const item of history) bubble(item.role, item.content);
-    statusText.textContent = "Ready when you are.";
+    statusText.textContent = "";
   } catch (error) {
     statusText.textContent = error.message;
   } finally {
