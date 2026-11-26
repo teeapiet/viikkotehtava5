@@ -15,7 +15,7 @@ OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://127.0.0.1:11434")
 OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "qwen2.5:0.5b")
 SYSTEM_PROMPT = os.environ.get(
     "SYSTEM_PROMPT",
-    "Olet ystävällinen Linux-opettaja. Vastaa lyhyesti käyttäjän kielellä.",
+    "You are a friendly Linux tutor. Always reply in English. Keep answers short.",
 )
 HISTORY_LIMIT = int(os.environ.get("HISTORY_LIMIT", "10"))
 MAX_MESSAGE_LEN = 2000
@@ -74,7 +74,7 @@ def health():
 @app.route("/api/history/<session_id>", methods=["GET", "DELETE"])
 def history(session_id):
     if not SESSION_RE.fullmatch(session_id):
-        return jsonify(error="Virheellinen keskustelutunniste"), 400
+        return jsonify(error="Invalid conversation ID"), 400
 
     try:
         if request.method == "DELETE":
@@ -82,34 +82,34 @@ def history(session_id):
             return jsonify(ok=True)
         return jsonify(db.get_history(session_id, limit=50))
     except db.DatabaseError:
-        app.logger.exception("Tietokantavirhe")
-        return jsonify(error="Tietokantavirhe"), 503
+        app.logger.exception("Database error")
+        return jsonify(error="Database error"), 503
 
 
 @app.post("/api/chat")
 def chat():
     data = request.get_json(silent=True)
     if not isinstance(data, dict):
-        return jsonify(error="Lähetä viesti JSON-oliona"), 400
+        return jsonify(error="Send the message as a JSON object"), 400
 
     session_id = data.get("session_id")
     message = data.get("message")
 
     if not isinstance(session_id, str) or not SESSION_RE.fullmatch(session_id):
-        return jsonify(error="Virheellinen keskustelutunniste"), 400
+        return jsonify(error="Invalid conversation ID"), 400
     if not isinstance(message, str) or not message.strip():
-        return jsonify(error="Viesti puuttuu"), 400
+        return jsonify(error="Please enter a message"), 400
 
     message = message.strip()
     if len(message) > MAX_MESSAGE_LEN:
-        return jsonify(error="Viesti saa olla enintään 2000 merkkiä"), 400
+        return jsonify(error="Your message must be no longer than 2000 characters"), 400
 
     try:
         past = db.get_history(session_id, limit=HISTORY_LIMIT)
         db.save_message(session_id, "user", message)
     except db.DatabaseError:
         app.logger.exception("Viestin tallennus epäonnistui")
-        return jsonify(error="Viestiä ei voitu tallentaa"), 503
+        return jsonify(error="Could not save your message"), 503
 
     messages = (
         [{"role": "system", "content": SYSTEM_PROMPT}]
@@ -151,7 +151,7 @@ def chat():
                     raise ValueError("Ollaman vastaus katkesi")
         except (requests.RequestException, ValueError, AttributeError, TypeError):
             app.logger.exception("Ollama-kutsu epäonnistui")
-            yield ndjson({"error": "Kielimalli ei vastannut loppuun. Yritä uudelleen."})
+            yield ndjson({"error": "The model could not complete its response. Please try again."})
             return
 
         reply = "".join(parts)
@@ -160,7 +160,7 @@ def chat():
                 db.save_message(session_id, "assistant", reply)
         except db.DatabaseError:
             app.logger.exception("Vastauksen tallennus epäonnistui")
-            yield ndjson({"error": "Vastaus saatiin, mutta sen tallennus epäonnistui."})
+            yield ndjson({"error": "The response was received but could not be saved."})
             return
         yield ndjson({"done": True})
 

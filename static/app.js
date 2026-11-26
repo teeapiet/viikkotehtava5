@@ -42,10 +42,10 @@ async function loadHistory() {
   busy(true);
   try {
     const response = await fetch(`${base}/api/history/${sessionId}`);
-    if (!response.ok) throw new Error("Keskusteluhistorian lataus epäonnistui.");
+    if (!response.ok) throw new Error("Could not load conversation history.");
     const history = await response.json();
     for (const item of history) bubble(item.role, item.content);
-    statusText.textContent = "Valmis.";
+    statusText.textContent = "Ready when you are.";
   } catch (error) {
     statusText.textContent = error.message;
   } finally {
@@ -62,7 +62,7 @@ form.addEventListener("submit", async event => {
   bubble("user", message);
   input.value = "";
   const answer = bubble("assistant", "");
-  statusText.textContent = "Malli vastaa…";
+  statusText.textContent = "The assistant is thinking…";
   let done = false;
 
   function processLine(line) {
@@ -82,10 +82,10 @@ form.addEventListener("submit", async event => {
 
     if (!response.ok) {
       if (response.status === 429) {
-        throw new Error("Liian monta viestiä. Odota hetki ennen seuraavaa.");
+        throw new Error("Too many messages. Please wait a moment before sending another.");
       }
       const data = await response.json().catch(() => ({}));
-      throw new Error(data.error || `Palvelinvirhe ${response.status}`);
+      throw new Error(data.error || `Server error ${response.status}`);
     }
 
     const reader = response.body.getReader();
@@ -102,15 +102,15 @@ form.addEventListener("submit", async event => {
       }
       pending += decoder.decode();
       processLine(pending);
-      if (!done) throw new Error("Yhteys katkesi ennen vastauksen valmistumista.");
+      if (!done) throw new Error("The connection closed before the response was complete.");
     } finally {
       await reader.cancel().catch(() => {});
       reader.releaseLock();
     }
 
-    statusText.textContent = "Vastaus tallennettu.";
+    statusText.textContent = "Response saved.";
   } catch (error) {
-    if (!answer.textContent) answer.textContent = "Vastausta ei saatu.";
+    if (!answer.textContent) answer.textContent = "No response was received.";
     statusText.textContent = error.message;
   } finally {
     busy(false);
@@ -119,15 +119,15 @@ form.addEventListener("submit", async event => {
 });
 
 clearButton.addEventListener("click", async () => {
-  if (!confirm("Poistetaanko tämän keskustelun tallennetut viestit?")) return;
+  if (!confirm("Delete all saved messages in this conversation?")) return;
   busy(true);
   try {
     const response = await fetch(`${base}/api/history/${sessionId}`, {
       method: "DELETE",
     });
-    if (!response.ok) throw new Error("Poistaminen epäonnistui.");
+    if (!response.ok) throw new Error("Could not delete the conversation.");
     messages.replaceChildren();
-    statusText.textContent = "Keskustelu poistettu.";
+    statusText.textContent = "Conversation deleted.";
   } catch (error) {
     statusText.textContent = error.message;
   } finally {

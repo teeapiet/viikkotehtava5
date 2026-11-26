@@ -55,7 +55,7 @@ DB_PASSWORD=$DB_PASSWORD
 OLLAMA_URL=http://127.0.0.1:11434
 OLLAMA_MODEL=qwen2.5:0.5b
 HISTORY_LIMIT=10
-SYSTEM_PROMPT="Olet ystävällinen Linux-opettaja. Vastaa lyhyesti suomeksi."
+SYSTEM_PROMPT="You are a friendly Linux tutor. Always reply in English. Keep answers short."
 ENV
     unset DB_PASSWORD
 else
