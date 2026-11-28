@@ -1,0 +1,4 @@
+/viikko5/ HTTP 200
+/viikko5/static/style.css HTTP 200
+/viikko5/static/app.js HTTP 200
+/viikko5/api/history/evidence-session HTTP 200
