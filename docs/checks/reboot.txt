@@ -1,0 +1,61 @@
+2026-11-28T13:17:57+00:00
+2026-11-28 13:16:05
+enabled
+enabled
+active
+active
+active
+active
+● chatapp.service - Viikko 5 Flask-chat
+     Loaded: loaded (/etc/systemd/system/chatapp.service; enabled; preset: enabled)
+     Active: active (running) since Sat 2026-11-28 13:16:36 UTC; 1min 21s ago
+ Invocation: 8971443e4765412dae14af5392921a87
+   Main PID: 1324 (gunicorn)
+      Tasks: 3 (limit: 7955)
+     Memory: 76.7M (peak: 77.2M)
+        CPU: 976ms
+     CGroup: /system.slice/chatapp.service
+             ├─1324 /opt/chatapp/venv/bin/python /opt/chatapp/venv/bin/gunicorn --workers 2 --worker-class gthread --threads 8 --timeout 300 --bind unix:/run/chatapp/gunicorn.sock --umask 007 --access-logfile - app:app
+             ├─1344 /opt/chatapp/venv/bin/python /opt/chatapp/venv/bin/gunicorn --workers 2 --worker-class gthread --threads 8 --timeout 300 --bind unix:/run/chatapp/gunicorn.sock --umask 007 --access-logfile - app:app
+             └─1351 /opt/chatapp/venv/bin/python /opt/chatapp/venv/bin/gunicorn --workers 2 --worker-class gthread --threads 8 --timeout 300 --bind unix:/run/chatapp/gunicorn.sock --umask 007 --access-logfile - app:app
+
+Nov 28 13:16:36 linuxxcourse systemd[1]: Started chatapp.service - Viikko 5 Flask-chat.
+Nov 28 13:16:36 linuxxcourse gunicorn[1324]: [2026-11-28 13:16:36 +0000] [1324] [INFO] Starting gunicorn 27.0.1
+Nov 28 13:16:36 linuxxcourse gunicorn[1324]: [2026-11-28 13:16:36 +0000] [1324] [INFO] Listening at: unix:/run/chatapp/gunicorn.sock (1324)
+Nov 28 13:16:36 linuxxcourse gunicorn[1324]: [2026-11-28 13:16:36 +0000] [1324] [INFO] Using worker: gthread
+Nov 28 13:16:36 linuxxcourse gunicorn[1344]: [2026-11-28 13:16:36 +0000] [1344] [INFO] Booting worker with pid: 1344
+Nov 28 13:16:36 linuxxcourse gunicorn[1351]: [2026-11-28 13:16:36 +0000] [1351] [INFO] Booting worker with pid: 1351
+Nov 28 13:16:37 linuxxcourse gunicorn[1324]: [2026-11-28 13:16:37 +0000] [1324] [ERROR] Control server error: [Errno 13] Permission denied: '/home/chatapp'
+
+● ollama.service - Ollama Service
+     Loaded: loaded (/etc/systemd/system/ollama.service; enabled; preset: enabled)
+     Active: active (running) since Sat 2026-11-28 13:16:26 UTC; 1min 30s ago
+ Invocation: baa1775390b340bc89dbf17aff4c05d7
+   Main PID: 971 (ollama)
+      Tasks: 11 (limit: 7955)
+     Memory: 199M (peak: 206.4M)
+        CPU: 506ms
+     CGroup: /system.slice/ollama.service
+             └─971 /usr/local/bin/ollama serve
+
+Nov 28 13:16:26 linuxxcourse systemd[1]: Started ollama.service - Ollama Service.
+Nov 28 13:16:32 linuxxcourse ollama[971]: time=2026-11-28T13:16:27.701Z level=INFO source=routes.go:2484 msg="server config" env="map[CUDA_VISIBLE_DEVICES: GGML_VK_VISIBLE_DEVICES: GPU_DEVICE_ORDINAL: HIP_VISIBLE_DEVICES: HSA_OVERRIDE_GFX_VERSION: HTTPS_PROXY: HTTP_PROXY: LLAMA_ARG_FIT: LLAMA_ARG_FIT_TARGET: NO_PROXY: OLLAMA_CONTEXT_LENGTH:0 OLLAMA_CREATE_REMOTE:false OLLAMA_DEBUG:INFO OLLAMA_DEBUG_LOG_REQUESTS:false OLLAMA_EDITOR: OLLAMA_FLASH_ATTENTION:false OLLAMA_GO_TEMPLATE:true OLLAMA_GPU_OVERHEAD:0 OLLAMA_HOST:http://127.0.0.1:11434 OLLAMA_IGPU_ENABLE: OLLAMA_KEEP_ALIVE:5m0s OLLAMA_KV_CACHE_TYPE: OLLAMA_LLM_LIBRARY: OLLAMA_LOAD_TIMEOUT:5m0s OLLAMA_MAX_LOADED_MODELS:0 OLLAMA_MAX_QUEUE:512 OLLAMA_MAX_TRANSFER_STREAMS:4 OLLAMA_MODELS:/usr/share/ollama/.ollama/models OLLAMA_NOHISTORY:false OLLAMA_NOPRUNE:false OLLAMA_NO_CLOUD:false OLLAMA_NUM_PARALLEL:0 OLLAMA_ORIGINS:[http://localhost https://localhost http://localhost:* https://localhost:* http://127.0.0.1 https://127.0.0.1 http://127.0.0.1:* https://127.0.0.1:* http://0.0.0.0 https://0.0.0.0 http://0.0.0.0:* https://0.0.0.0:* app://* file://* tauri://* vscode-webview://* vscode-file://*] OLLAMA_REMOTES:[ollama.com] OLLAMA_SCHED_SPREAD:false OLLAMA_VULKAN:true ROCR_VISIBLE_DEVICES: http_proxy: https_proxy: no_proxy:]"
+Nov 28 13:16:32 linuxxcourse ollama[971]: time=2026-11-28T13:16:27.701Z level=INFO source=routes.go:2486 msg="Ollama cloud disabled: false"
+Nov 28 13:16:32 linuxxcourse ollama[971]: time=2026-11-28T13:16:28.042Z level=INFO source=images.go:1033 msg="total blobs: 6"
+Nov 28 13:16:32 linuxxcourse ollama[971]: time=2026-11-28T13:16:28.053Z level=INFO source=images.go:1042 msg="total unused blobs removed: 0"
+Nov 28 13:16:32 linuxxcourse ollama[971]: time=2026-11-28T13:16:28.054Z level=INFO source=routes.go:2546 msg="Listening on 127.0.0.1:11434 (version 0.40.18)"
+Nov 28 13:16:32 linuxxcourse ollama[971]: time=2026-11-28T13:16:28.120Z level=INFO source=runner.go:60 msg="discovering available GPUs..."
+Nov 28 13:16:32 linuxxcourse ollama[971]: time=2026-11-28T13:16:31.041Z level=INFO source=model_recommendations.go:177 msg="model recommendations cache sleep scheduled" wait=4h15m7.987690539s consecutive_failures=0
+Nov 28 13:16:33 linuxxcourse ollama[971]: time=2026-11-28T13:16:33.069Z level=INFO source=types.go:50 msg="inference compute" id=cpu library=cpu compute="" name=cpu description=cpu libdirs=ollama driver="" pci_id="" type="" total="7.6 GiB" available="7.0 GiB"
+Nov 28 13:16:33 linuxxcourse ollama[971]: time=2026-11-28T13:16:33.069Z level=INFO source=routes.go:2596 msg="vram-based default context" total_vram="0 B" default_num_ctx=4096
+df8f2a816034528f807219634bfe4b47f26e71c7
+{"token": "Hello"}
+{"token": "!"}
+{"token": " How"}
+{"token": " can"}
+{"token": " I"}
+{"token": " assist"}
+{"token": " you"}
+{"token": " today"}
+{"token": "?"}
+{"done": true}
