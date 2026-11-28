@@ -32,7 +32,7 @@
 | Successful deployment 1 | [Open the successful workflow run](https://github.com/teeapiet/viikkotehtava5/actions/runs/45845553198). |
 | Successful deployment 2 | [Open another successful workflow run](https://github.com/teeapiet/viikkotehtava5/actions/runs/45844868326). |
 | Deployed version | The deployment writes GitHub’s commit SHA to `REVISION`. The [health endpoint](http://195.148.23.163/viikko5/health) returns it. |
-| Failed test blocks deployment | The [failed workflow run](https://github.com/teeapiet/viikkotehtava5/actions/runs/45840061902) shows a failed test and a skipped deploy job. |
+| Failed test blocks deployment | The [failed workflow run](https://github.com/teeapiet/viikkotehtava5/actions/runs/46152884798) shows a failed test and a skipped deploy job. |
 | Startup after reboot | The [reboot check](docs/checks/reboot.txt) records service status and health responses after restarting the server, before manually starting any services. |
 | Nginx sub-path | The [HTTP checks](docs/checks/subpath.txt) cover the page, CSS, JavaScript and history API under `/viikko5/`. |
 
