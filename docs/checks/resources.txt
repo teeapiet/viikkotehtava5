@@ -1,0 +1,9 @@
+NAME            ID              SIZE      MODIFIED   
+qwen2.5:0.5b    a8b0c5157701    397 MB    2 days ago    
+NAME            ID              SIZE      PROCESSOR    CONTEXT    RUNNER      UNTIL              
+qwen2.5:0.5b    a8b0c5157701    486 MB    100% CPU     4096       llamacpp    4 minutes from now    
+               total        used        free      shared  buff/cache   available
+Mem:           7.6Gi       1.3Gi       2.0Gi       5.1Mi       4.6Gi       6.3Gi
+Swap:             0B          0B          0B
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vda1        77G  6.4G   71G   9% /

@@ -1,0 +1,25 @@
+● chatapp.service - Viikko 5 Flask-chat
+     Loaded: loaded (/etc/systemd/system/chatapp.service; enabled; preset: enabled)
+     Active: active (running) since Thu 2026-11-26 15:25:56 UTC; 1 day 21h ago
+ Invocation: e898608eceb4416b9580bd45ecc35f34
+   Main PID: 281710 (gunicorn)
+      Tasks: 5 (limit: 7955)
+     Memory: 73.1M (peak: 74.1M)
+        CPU: 1min 22.237s
+     CGroup: /system.slice/chatapp.service
+             ├─281710 /opt/chatapp/venv/bin/python /opt/chatapp/venv/bin/gunicorn --workers 2 --worker-class gthread --threads 8 --timeout 300 --bind unix:/run/chatapp/gunicorn.sock --umask 007 --access-logfile - app:app
+             ├─281727 /opt/chatapp/venv/bin/python /opt/chatapp/venv/bin/gunicorn --workers 2 --worker-class gthread --threads 8 --timeout 300 --bind unix:/run/chatapp/gunicorn.sock --umask 007 --access-logfile - app:app
+             └─281728 /opt/chatapp/venv/bin/python /opt/chatapp/venv/bin/gunicorn --workers 2 --worker-class gthread --threads 8 --timeout 300 --bind unix:/run/chatapp/gunicorn.sock --umask 007 --access-logfile - app:app
+
+Nov 26 15:25:58 linuxxcourse gunicorn[281728]:  - - [26/Nov/2026:15:25:58 +0000] "GET /health HTTP/1.1" 200 41 "-" "curl/8.18.0"
+Nov 26 15:25:58 linuxxcourse gunicorn[281728]: 4.242.46.141 - - [26/Nov/2026:15:25:58 +0000] "GET /health HTTP/1.1" 200 41 "-" "curl/8.18.0"
+Nov 26 15:25:59 linuxxcourse gunicorn[281728]: 4.242.46.141 - - [26/Nov/2026:15:25:59 +0000] "GET / HTTP/1.1" 200 1251 "-" "curl/8.18.0"
+Nov 26 15:26:21 linuxxcourse gunicorn[281727]: 84.249.217.110 - - [26/Nov/2026:15:26:21 +0000] "GET / HTTP/1.1" 200 1251 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/158.0.0.0 Safari/537.36"
+Nov 26 15:26:21 linuxxcourse gunicorn[281727]: 84.249.217.110 - - [26/Nov/2026:15:26:21 +0000] "GET /api/history/6393c9ebd8c9780702aade4a99d2af8c1e5ab7f2063e164f HTTP/1.1" 200 513 "http://195.148.23.163/viikko5/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/158.0.0.0 Safari/537.36"
+Nov 28 11:46:30 linuxxcourse gunicorn[281727]: 84.249.217.110 - - [28/Nov/2026:11:46:30 +0000] "GET / HTTP/1.1" 200 1251 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/158.0.0.0 Safari/537.36"
+Nov 28 11:46:30 linuxxcourse gunicorn[281728]: 84.249.217.110 - - [28/Nov/2026:11:46:30 +0000] "GET /api/history/6393c9ebd8c9780702aade4a99d2af8c1e5ab7f2063e164f HTTP/1.1" 200 513 "http://195.148.23.163/viikko5/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/158.0.0.0 Safari/537.36"
+Nov 28 12:39:40 linuxxcourse gunicorn[281727]: 84.249.217.110 - - [28/Nov/2026:12:39:40 +0000] "GET / HTTP/1.1" 200 1251 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/158.0.0.0 Safari/537.36"
+Nov 28 12:39:40 linuxxcourse gunicorn[281727]: 84.249.217.110 - - [28/Nov/2026:12:39:40 +0000] "GET /api/history/6393c9ebd8c9780702aade4a99d2af8c1e5ab7f2063e164f HTTP/1.1" 200 513 "http://195.148.23.163/viikko5/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/158.0.0.0 Safari/537.36"
+Nov 28 12:46:27 linuxxcourse gunicorn[281728]: 84.249.217.110 - - [28/Nov/2026:12:46:27 +0000] "GET /health HTTP/1.1" 200 41 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/158.0.0.0 Safari/537.36"
+User=chatapp
+Group=www-data

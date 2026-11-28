@@ -1,0 +1,18 @@
+drwx------ 2 root    root     4096 Nov 26 14:57 /etc/chatapp
+drwxr-xr-x 6 ubuntu  ubuntu   4096 Nov 26 15:25 /opt/chatapp/app
+drwxr-x--- 2 chatapp www-data   60 Nov 26 15:25 /run/chatapp
+total 52
+-rw-r--r-- 1 ubuntu ubuntu   80 Nov 26 15:25 README.md
+-rw-rw-r-- 1 ubuntu ubuntu   41 Nov 26 15:25 REVISION
+-rw-r--r-- 1 ubuntu ubuntu 5788 Nov 26 15:25 app.py
+-rw-r--r-- 1 ubuntu ubuntu 2184 Nov 26 15:25 db.py
+drwxr-xr-x 5 ubuntu ubuntu 4096 Nov 26 15:25 deploy
+-rw-r--r-- 1 ubuntu ubuntu  150 Nov 26 15:25 pyproject.toml
+-rw-r--r-- 1 ubuntu ubuntu   40 Nov 26 15:25 requirements-dev.txt
+-rw-r--r-- 1 ubuntu ubuntu   61 Nov 26 15:25 requirements.txt
+drwxr-xr-x 2 ubuntu ubuntu 4096 Nov 26 15:25 scripts
+drwxr-xr-x 2 ubuntu ubuntu 4096 Nov 26 15:25 static
+drwxr-xr-x 2 ubuntu ubuntu 4096 Nov 26 15:25 templates
+-rw-r--r-- 1 ubuntu ubuntu 3749 Nov 26 15:25 test_app.py
+-rw------- 1 root    root     323 Nov 26 14:57 /etc/chatapp/chatapp.env
+srwxrwx--- 1 chatapp www-data   0 Nov 26 15:25 /run/chatapp/gunicorn.sock

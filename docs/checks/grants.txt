@@ -1,0 +1,2 @@
+GRANT USAGE ON *.* TO `chatapp`@`127.0.0.1` [authentication details removed]
+GRANT SELECT, INSERT, DELETE ON `chatapp`.* TO `chatapp`@`127.0.0.1`

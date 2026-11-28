@@ -1,0 +1,13 @@
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                                                                                                                                   
+LISTEN 0      80      192.168.1.25:3306       0.0.0.0:*    users:(("mariadbd",pid=36067,fd=32))                                                                                                     
+LISTEN 0      4096      127.0.0.54:53         0.0.0.0:*    users:(("systemd-resolve",pid=519,fd=19))                                                                                                
+LISTEN 0      4096   127.0.0.53%lo:53         0.0.0.0:*    users:(("systemd-resolve",pid=519,fd=17))                                                                                                
+LISTEN 0      512        127.0.0.1:44691      0.0.0.0:*    users:(("llama-server",pid=346499,fd=3))                                                                                                 
+LISTEN 0      511          0.0.0.0:80         0.0.0.0:*    users:(("nginx",pid=281720,fd=5),("nginx",pid=281719,fd=5),("nginx",pid=281718,fd=5),("nginx",pid=281716,fd=5),("nginx",pid=125014,fd=5))
+LISTEN 0      4096         0.0.0.0:22         0.0.0.0:*    users:(("sshd",pid=963,fd=3),("systemd",pid=1,fd=173))                                                                                   
+LISTEN 0      2048       127.0.0.1:8000       0.0.0.0:*    users:(("gunicorn",pid=264151,fd=3),("gunicorn",pid=264126,fd=3))                                                                        
+LISTEN 0      4096       127.0.0.1:11434      0.0.0.0:*    users:(("ollama",pid=242767,fd=4))                                                                                                       
+LISTEN 0      80         127.0.0.1:3306       0.0.0.0:*    users:(("mariadbd",pid=36067,fd=31))                                                                                                     
+LISTEN 0      511             [::]:80            [::]:*    users:(("nginx",pid=281720,fd=6),("nginx",pid=281719,fd=6),("nginx",pid=281718,fd=6),("nginx",pid=281716,fd=6),("nginx",pid=125014,fd=6))
+LISTEN 0      4096            [::]:22            [::]:*    users:(("sshd",pid=963,fd=4),("systemd",pid=1,fd=175))                                                                                   
+u_str LISTEN 0      2048                        /run/chatapp/gunicorn.sock 1203128            * 0    users:(("gunicorn",pid=281728,fd=3),("gunicorn",pid=281727,fd=3),("gunicorn",pid=281710,fd=3))
