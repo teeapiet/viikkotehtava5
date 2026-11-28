@@ -5,7 +5,7 @@
 | Item | My implementation |
 |---|---|
 | Application | The chat runs on Server A at [http://195.148.23.163/viikko5/](http://195.148.23.163/viikko5/). |
-| Repository | The application, tests and deployment configuration are in this [public repository](https://github.com/teeapiet/viikkotehtava5). |
+| Repository | The application, tests and deployment configuration are in this [repository](https://github.com/teeapiet/viikkotehtava5). |
 | Request path | Browser → Nginx → Gunicorn Unix socket → Flask → Ollama / MariaDB. |
 | CI pipeline | Every push and pull request runs Ruff, pytest and shell syntax checks. Chat tests mock Ollama and use in-memory storage instead of the production database. The deploy job requires successful tests. See the [workflow](.github/workflows/ci-cd.yml) and [tests](test_app.py). |
 | Automated deployment | Successful pushes to `main` deploy automatically. The workflow copies the code, installs dependencies, updates the server configuration, checks Nginx before reloading it and restarts only `chatapp`. It verifies the running SHA through the socket and public URL. |
